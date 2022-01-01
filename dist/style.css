@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  cursor: pointer;
+}
+
+#count {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 3rem;
+  font-weight: bold;
+  user-select: none;
+}

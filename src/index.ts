@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { PerspectiveCamera, Scene, WebGLRenderer } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 import { Sky } from 'three/examples/jsm/objects/Sky'
 
 window.addEventListener('load', () => {
@@ -12,9 +13,11 @@ let scene: Scene, camera: PerspectiveCamera, renderer: WebGLRenderer
 const init = () => {
   //シーン、カメラ、レンダラーを生成
   scene = new THREE.Scene();
+
   camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 100, 2000000)
-  camera.position.set(0, 100, 2000)
+  camera.position.set(0, 600, 500)
   scene.add(camera)
+
   renderer = new THREE.WebGLRenderer({antialias:true})
   renderer.setPixelRatio(window.devicePixelRatio)
   renderer.setSize(window.innerWidth, window.innerHeight)
@@ -39,7 +42,17 @@ const init = () => {
   threeWorld()
   setLight()
   setSky()
+  setUsu()
+  setKine()
   rendering()
+
+  document.body.addEventListener('mousedown', () => {
+    handleMouseDownBody()
+  })
+
+  document.body.addEventListener('mouseup', () => {
+    handleMouseUpBody()
+  })
 }
 
 const threeWorld = () => {
@@ -64,7 +77,6 @@ const setSky = () => {
   const sun = new THREE.Vector3()
 
   const uniforms = sky.material.uniforms
-  console.log(uniforms)
   uniforms.turbidity.value = 10
   uniforms.rayleigh.value = 3
   uniforms.mieCoefficient.value = 0.005
@@ -78,7 +90,41 @@ const setSky = () => {
   uniforms.sunPosition.value.copy(sun)
 }
 
+const setUsu = () => {
+  const loader = new FBXLoader()
+
+  loader.load('usu.fbx', (object) => {
+    object.name = 'usu'
+    object.scale.set(1, 1, 1)
+
+    scene.add(object)
+  })
+}
+
+const setKine = () => {
+  const loader = new FBXLoader()
+
+  loader.load('kine.fbx', (object) => {
+    object.name = 'kine'
+    object.scale.set(1, 1, 1)
+    object.rotateY(-90)
+    object.position.set(0, 100, 0)
+
+    scene.add(object)
+  })
+}
+
 const rendering = () => {
   requestAnimationFrame(rendering)
   renderer.render(scene, camera)
+}
+
+const handleMouseDownBody = () => {
+  const kine = scene.getObjectByName('kine')
+  kine?.position.set(0, 0, 0)
+}
+
+const handleMouseUpBody = () => {
+  const kine = scene.getObjectByName('kine')
+  kine?.position.set(0, 100, 0)
 }
