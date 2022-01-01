@@ -36,7 +36,6 @@ const init = () => {
     renderer.setSize(window.innerWidth, window.innerHeight)
   }, false)
 
-  threeWorld()
   setLight()
   setSky()
   setUsu()
@@ -51,15 +50,6 @@ const init = () => {
   document.querySelector('#tap-target')?.addEventListener('pointerup', () => {
     handlePointerUpTapTarget()
   })
-}
-
-const threeWorld = () => {
-  // const axes = new THREE.AxesHelper(1000)
-  // axes.position.set(0, 0, 0)
-  // scene.add(axes)
-
-  // const grid = new THREE.GridHelper(10000, 2, 0xffffff, 0xffffff)
-  // scene.add(grid)
 }
 
 const setLight = () => {
