@@ -13,17 +13,24 @@
     />
   </head>
   <body>
-    <header class="header">
-      <div id="time">10:00</div>
-      <div class="credit">Created by <a href="#">@putchom</a></div>
-    </header>
-    <div id="tap-target"></div>
+    <div id="tap-target" style="display: none"></div>
+    <div id="timer">10</div>
     <div id="count">0</div>
-    <div class="scrim">
-      <h1 class="title">餅つきオンライン</h1>
+    <div id="start-view" class="scrim">
       <p class="description">10秒以内に連打で餅をつきまくれ</p>
-      <button id="start-button">スタート</button>
+      <button id="start-button" class="button">はじめる</button>
     </div>
+    <div id="end-view" class="scrim" style="display: none">
+      <p class="description"><span id="result">0</span>回つけました</p>
+      <button id="restart-button" class="button">もっかい</button>
+      <button id="tweet-button" class="button">ツイート</button>
+    </div>
+    <header class="header">
+      <h1 class="title">餅つきオンライン</h1>
+      <div class="credit">
+        by <a href="https://twitter.com/putchom">@putchom</a>
+      </div>
+    </header>
     <script src="./main.js" type="module"></script>
   </body>
 </html>

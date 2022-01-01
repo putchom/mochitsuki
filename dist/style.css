@@ -17,20 +17,20 @@ body {
   justify-content: center;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.8);
+  gap: 0.5rem;
 }
 
 .title {
   margin: 0 0 0.5rem 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .description {
   font-size: 1rem;
-  margin: 0 0 1.5rem 0;
   padding: 0;
 }
 
-#start-button {
+.button {
   border: none;
   font-weight: bold;
   font-family: "Potta One", cursive;
@@ -53,11 +53,18 @@ body {
   font-size: 1rem;
 }
 
+#timer {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: 2rem;
+}
+
 #count {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 #tap-target {

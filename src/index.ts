@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
 })
 
 let scene: Scene, camera: PerspectiveCamera, renderer: WebGLRenderer
-let count: number = 0
+let count = 0
 
 const init = () => {
   //シーン、カメラ、レンダラーを生成
@@ -49,6 +49,14 @@ const init = () => {
 
   document.querySelector('#tap-target')?.addEventListener('pointerup', () => {
     handlePointerUpTapTarget()
+  })
+
+  document.querySelector('#start-button')?.addEventListener('click', (event) => {
+    handleClickStartButton(event)
+  })
+
+  document.querySelector('#restart-button')?.addEventListener('click', (event) => {
+    handleClickRestartButton(event)
   })
 }
 
@@ -132,6 +140,40 @@ const handlePointerDownTapTarget = () => {
 const handlePointerUpTapTarget = () => {
   const kine = scene.getObjectByName('kine')
   kine?.position.set(0, 100, 0)
-  count += 1
+  count++
   document.querySelector('#count')?.textContent = count.toString()
+}
+
+const handleClickStartButton = (event: Event) => {
+  event.preventDefault()
+  document.querySelector('#start-view')?.setAttribute('style', 'display: none;')
+  document.querySelector('#tap-target')?.setAttribute('style', 'display: block;')
+
+  start()
+}
+
+const handleClickRestartButton = (event: Event) => {
+  event.preventDefault()
+  count = 0
+  document.querySelector('#count')?.textContent = count.toString()
+  document.querySelector('#timer')?.textContent = 10
+
+  document.querySelector('#end-view')?.setAttribute('style', 'display: none;')
+  document.querySelector('#tap-target')?.setAttribute('style', 'display: block;')
+
+  start()
+}
+
+const start = () => {
+  let remainingTime = 10
+  const id = setInterval(() => {
+    remainingTime--
+    document.querySelector('#timer')?.textContent = remainingTime
+    if (remainingTime <= 0) {
+      clearInterval(id)
+      document.querySelector('#tap-target')?.setAttribute('style', 'display: none;')
+      document.querySelector('#result')?.textContent = count.toString()
+      document.querySelector('#end-view')?.setAttribute('style', 'display: flex;')
+    }
+  }, 1000)
 }
