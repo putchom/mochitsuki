@@ -3,16 +3,54 @@ body {
   cursor: pointer;
   font-family: "Potta One", cursive;
   color: white;
+  user-select: none;
+}
+
+.scrim {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .title {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+}
+
+.description {
+  font-size: 1rem;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+}
+
+#start-button {
+  border: none;
+  font-weight: bold;
+  font-family: "Potta One", cursive;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.header {
+  box-sizing: border-box;
   position: absolute;
   top: 0;
   left: 0;
-  user-select: none;
-  margin: 0;
-  padding: 0.5rem;
-  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
 }
 
 #count {
@@ -20,8 +58,6 @@ body {
   bottom: 1rem;
   right: 1rem;
   font-size: 3rem;
-  font-weight: bold;
-  user-select: none;
 }
 
 #tap-target {
@@ -30,4 +66,8 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+.credit a {
+  color: white;
 }
