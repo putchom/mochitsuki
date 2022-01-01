@@ -18,6 +18,7 @@ body {
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.8);
   gap: 0.5rem;
+  padding: 0 1rem;
 }
 
 .title {

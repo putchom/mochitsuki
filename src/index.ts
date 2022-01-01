@@ -171,7 +171,7 @@ const start = () => {
     document.querySelector('#timer')?.textContent = remainingTime
     if (remainingTime <= 0) {
       clearInterval(id)
-      const text = `もちを${count}回つきました`
+      const text = getText(count)
       document.querySelector('#tap-target')?.setAttribute('style', 'display: none;')
 
       document.querySelector('#result')?.textContent = text
@@ -181,4 +181,34 @@ const start = () => {
       document.querySelector('#end-view')?.setAttribute('style', 'display: flex;')
     }
   }, 1000)
+}
+
+const getText = (count: number) => {
+  let text = `もちを${count}回つきました`
+
+  if (count < 10) {
+    text = `もちを${count}回つきました。あなたはもち雑魚です。`
+  } else if (count < 20) {
+    text = `もちを${count}回つきました。あなたはもち素人です。`
+  } else if (count < 30) {
+    text = `もちを${count}回つきました。あなたはもち太郎です。`
+  } else if (count < 40) {
+    text = `もちを${count}回つきました。あなたはもち夫です。`
+  } else if (count < 50) {
+    text = `もちを${count}回つきました。あなたはもちマンです。`
+  } else if (count < 60) {
+    text = `もちを${count}回つきました。あなたはもち大王です。`
+  } else if (count < 70) {
+    text = `もちを${count}回つきました。あなたはもち魔神です。`
+  } else if (count < 80) {
+    text = `もちを${count}回つきました。あなたはもち廃人です。`
+  } else if (count < 90) {
+    text = `もちを${count}回つきました。あなたはもち狂いです。`
+  } else if (count < 100) {
+    text = `もちを${count}回つきました。あなたはもち神です。`
+  } else {
+    text = `もちを${count}回つきました。あなたはもち帝王です。`
+  }
+
+  return text
 }
