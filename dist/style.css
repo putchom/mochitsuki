@@ -1,13 +1,32 @@
 body {
   margin: 0;
   cursor: pointer;
+  font-family: "Potta One", cursive;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  user-select: none;
+  margin: 0;
+  padding: 0.5rem;
+  font-size: 1.5rem;
 }
 
 #count {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-weight: bold;
   user-select: none;
+}
+
+#tap-target {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }

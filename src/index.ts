@@ -9,6 +9,7 @@ window.addEventListener('load', () => {
 })
 
 let scene: Scene, camera: PerspectiveCamera, renderer: WebGLRenderer
+let count: number = 0
 
 const init = () => {
   //シーン、カメラ、レンダラーを生成
@@ -46,22 +47,22 @@ const init = () => {
   setKine()
   rendering()
 
-  document.body.addEventListener('mousedown', () => {
-    handleMouseDownBody()
+  document.querySelector('#tap-target')?.addEventListener('pointerdown', () => {
+    handlePointerDownTapTarget()
   })
 
-  document.body.addEventListener('mouseup', () => {
-    handleMouseUpBody()
+  document.querySelector('#tap-target')?.addEventListener('pointerup', () => {
+    handlePointerUpTapTarget()
   })
 }
 
 const threeWorld = () => {
-  const axes = new THREE.AxesHelper(1000)
-  axes.position.set(0, 0, 0)
-  scene.add(axes)
+  // const axes = new THREE.AxesHelper(1000)
+  // axes.position.set(0, 0, 0)
+  // scene.add(axes)
 
-  const grid = new THREE.GridHelper(10000, 2, 0xffffff, 0xffffff)
-  scene.add(grid)
+  // const grid = new THREE.GridHelper(10000, 2, 0xffffff, 0xffffff)
+  // scene.add(grid)
 }
 
 const setLight = () => {
@@ -119,12 +120,14 @@ const rendering = () => {
   renderer.render(scene, camera)
 }
 
-const handleMouseDownBody = () => {
+const handlePointerDownTapTarget = () => {
   const kine = scene.getObjectByName('kine')
   kine?.position.set(0, 0, 0)
 }
 
-const handleMouseUpBody = () => {
+const handlePointerUpTapTarget = () => {
   const kine = scene.getObjectByName('kine')
   kine?.position.set(0, 100, 0)
+  count += 1
+  document.querySelector('#count')?.textContent = count.toString()
 }
