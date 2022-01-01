@@ -47,6 +47,7 @@ const init = () => {
   setUsu()
   setMochi()
   setKine()
+  setTiger()
   rendering()
 
   document.querySelector('#tap-target')?.addEventListener('pointerdown', () => {
@@ -128,6 +129,19 @@ const setKine = () => {
     object.scale.set(1, 1, 1)
     object.rotateY(-90)
     object.position.set(0, 100, 0)
+
+    scene.add(object)
+  })
+}
+
+const setTiger = () => {
+  const loader = new FBXLoader()
+
+  loader.load('tiger_run.fbx', (object) => {
+    object.name = 'tiger'
+    object.scale.set(2, 2, 2)
+    object.rotateZ(90)
+    object.position.set(-200, 0, -200)
 
     scene.add(object)
   })
