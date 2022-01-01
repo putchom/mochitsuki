@@ -17,13 +17,20 @@
     <div id="timer">10</div>
     <div id="count">0</div>
     <div id="start-view" class="scrim">
-      <p class="description">10秒以内に連打で餅をつきまくれ</p>
+      <p class="description">連打で餅をつきまくれ!</p>
       <button id="start-button" class="button">はじめる</button>
     </div>
     <div id="end-view" class="scrim" style="display: none">
-      <p class="description"><span id="result">0</span>回つけました</p>
-      <button id="restart-button" class="button">もっかい</button>
-      <button id="tweet-button" class="button">ツイート</button>
+      <p id="result" class="description"></p>
+      <button id="restart-button" class="button">もう一回</button>
+      <a
+        id="tweet-button"
+        class="button"
+        href="https://twitter.com/intent/tweet"
+        target="_blank"
+        rel="noopener noreferrer"
+        >ツイート</a
+      >
     </div>
     <header class="header">
       <h1 class="title">餅つきオンライン</h1>

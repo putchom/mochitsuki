@@ -171,8 +171,13 @@ const start = () => {
     document.querySelector('#timer')?.textContent = remainingTime
     if (remainingTime <= 0) {
       clearInterval(id)
+      const text = `もちを${count}回つきました`
       document.querySelector('#tap-target')?.setAttribute('style', 'display: none;')
-      document.querySelector('#result')?.textContent = count.toString()
+
+      document.querySelector('#result')?.textContent = text
+      const url = 'https://mochitsuki.online'
+      const hashtags = '餅つきオンライン'
+      document.querySelector('#tweet-button')?.setAttribute('href', `https://twitter.com/intent/tweet?text=${encodeURIComponent(text + ' ' + url)}&hashtags=${encodeURIComponent(hashtags)}`)
       document.querySelector('#end-view')?.setAttribute('style', 'display: flex;')
     }
   }, 1000)
