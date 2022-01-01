@@ -2,6 +2,7 @@ body {
   margin: 0;
   cursor: pointer;
   font-family: "Potta One", cursive;
+  color: white;
 }
 
 .title {
@@ -18,7 +19,7 @@ body {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-weight: bold;
   user-select: none;
 }

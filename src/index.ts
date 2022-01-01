@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 import { PerspectiveCamera, Scene, WebGLRenderer } from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 import { Sky } from 'three/examples/jsm/objects/Sky'
 
@@ -17,6 +16,7 @@ const init = () => {
 
   camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 100, 2000000)
   camera.position.set(0, 600, 500)
+  camera.lookAt(new THREE.Vector3(0, 0, 0))
   scene.add(camera)
 
   renderer = new THREE.WebGLRenderer({antialias:true})
@@ -25,10 +25,6 @@ const init = () => {
   renderer.outputEncoding = THREE.sRGBEncoding
   renderer.toneMapping = THREE.ACESFilmicToneMapping
   renderer.toneMappingExposure = 0.5
-
-  //OrbitControls
-  document.addEventListener('touchmove', (event) => { event.preventDefault() }, { passive: false })
-  const orbitControls = new OrbitControls(camera, renderer.domElement)
 
   //canvasを作成
   document.body.appendChild(renderer.domElement)
@@ -44,6 +40,7 @@ const init = () => {
   setLight()
   setSky()
   setUsu()
+  setMochi()
   setKine()
   rendering()
 
@@ -68,6 +65,12 @@ const threeWorld = () => {
 const setLight = () => {
   const ambientLight = new THREE.AmbientLight(0xFFFFFF)
   scene.add(ambientLight)
+
+  const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1);
+  scene.add(directionalLight);
+
+  const hemisphereLight = new THREE.HemisphereLight(0x888888, 0x0000FF, 1.0)
+  scene.add(hemisphereLight)
 }
 
 const setSky = () => {
@@ -98,6 +101,17 @@ const setUsu = () => {
     object.name = 'usu'
     object.scale.set(1, 1, 1)
 
+    scene.add(object)
+  })
+}
+
+const setMochi = () => {
+  const loader = new FBXLoader()
+
+  loader.load('mochi.fbx', (object) => {
+    object.name = 'mochi'
+    object.scale.set(1, 1, 1)
+    
     scene.add(object)
   })
 }
