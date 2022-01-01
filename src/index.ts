@@ -10,6 +10,12 @@ window.addEventListener('load', () => {
 let scene: Scene, camera: PerspectiveCamera, renderer: WebGLRenderer
 let count = 0
 
+const music = new Audio();
+
+music.preload = 'auto';
+music.src = './assets/sound/hit.mp3';
+music.load();
+
 const init = () => {
   //シーン、カメラ、レンダラーを生成
   scene = new THREE.Scene();
@@ -142,6 +148,8 @@ const handlePointerUpTapTarget = () => {
   kine?.position.set(0, 100, 0)
   count++
   document.querySelector('#count')?.textContent = count.toString()
+  music.currentTime = 0;
+  music.play();
 }
 
 const handleClickStartButton = (event: Event) => {

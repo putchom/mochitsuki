@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  cursor: pointer;
   font-family: "Potta One", cursive;
   color: white;
   user-select: none;
@@ -29,6 +28,11 @@ body {
 .description {
   font-size: 1.5rem;
   padding: 0;
+  text-align: center;
+}
+
+.notice {
+  font-size: 1rem;
 }
 
 .button {
@@ -72,6 +76,7 @@ body {
 }
 
 #tap-target {
+  cursor: pointer;
   position: absolute;
   top: 0;
   right: 0;
