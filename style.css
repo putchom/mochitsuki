@@ -61,7 +61,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   font-size: 1rem;
 }
 
@@ -86,6 +86,12 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+.credit {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
 }
 
 .credit a {
