@@ -197,7 +197,7 @@ const start = () => {
       document.querySelector('#tap-target')?.setAttribute('style', 'display: none;')
 
       document.querySelector('#result')?.textContent = text
-      const url = 'http://mochitsuki.online'
+      const url = 'http://mochituki.online'
       const hashtags = '餅つきオンライン'
       document.querySelector('#tweet-button')?.setAttribute('href', `https://twitter.com/intent/tweet?text=${encodeURIComponent(text + ' ' + url)}&hashtags=${encodeURIComponent(hashtags)}`)
       document.querySelector('#end-view')?.setAttribute('style', 'display: flex;')
