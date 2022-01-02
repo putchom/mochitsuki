@@ -206,30 +206,30 @@ const start = () => {
 }
 
 const getText = (count: number) => {
-  let text = `もちを${count}回つきました`
+  let text = `餅を${count}回つきました`
 
   if (count < 10) {
-    text = `もちを${count}回つきました。あなたはもち雑魚です。`
+    text = `餅を${count}回つきました。あなたは餅の雑魚です。`
   } else if (count < 20) {
-    text = `もちを${count}回つきました。あなたはもち素人です。`
+    text = `餅を${count}回つきました。あなたは餅の素人です。`
   } else if (count < 30) {
-    text = `もちを${count}回つきました。あなたはもち太郎です。`
+    text = `餅を${count}回つきました。あなたは餅の一般人です。`
   } else if (count < 40) {
-    text = `もちを${count}回つきました。あなたはもち夫です。`
+    text = `餅を${count}回つきました。あなたは餅の旦那です。`
   } else if (count < 50) {
-    text = `もちを${count}回つきました。あなたはもちマンです。`
+    text = `餅を${count}回つきました。あなたは餅の達人です。`
   } else if (count < 60) {
-    text = `もちを${count}回つきました。あなたはもち大王です。`
+    text = `餅を${count}回つきました。あなたは餅の大王です。`
   } else if (count < 70) {
-    text = `もちを${count}回つきました。あなたはもち魔神です。`
+    text = `餅を${count}回つきました。あなたは餅の魔神です。`
   } else if (count < 80) {
-    text = `もちを${count}回つきました。あなたはもち廃人です。`
+    text = `餅を${count}回つきました。あなたは餅の廃人です。`
   } else if (count < 90) {
-    text = `もちを${count}回つきました。あなたはもち狂いです。`
+    text = `餅を${count}回つきました。あなたは餅の狂人です。`
   } else if (count < 100) {
-    text = `もちを${count}回つきました。あなたはもち神です。`
+    text = `餅を${count}回つきました。あなたは餅の神です。`
   } else {
-    text = `もちを${count}回つきました。あなたはもち帝王です。`
+    text = `餅を${count}回つきました。あなたは餅の帝王です。`
   }
 
   return text
