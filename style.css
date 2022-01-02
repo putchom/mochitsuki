@@ -88,11 +88,6 @@ body {
   left: 0;
 }
 
-.credit {
-  display: flex;
-  gap: 0.25rem;
-}
-
 .credit a {
   color: white;
 }
