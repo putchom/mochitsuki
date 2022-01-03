@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import { PerspectiveCamera, Scene, WebGLRenderer } from 'three'
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
-import { Sky } from 'three/examples/jsm/objects/Sky'
+import { setEnvironments } from './set-environments'
+import { setObjects } from './set-objects'
 
 window.addEventListener('load', () => {
   init()
@@ -42,12 +42,8 @@ const init = () => {
     renderer.setSize(window.innerWidth, window.innerHeight)
   }, false)
 
-  setLight()
-  setSky()
-  setUsu()
-  setMochi()
-  setKine()
-  setTiger()
+  setEnvironments(scene)
+  setObjects(scene)
   rendering()
 
   document.querySelector('#tap-target')?.addEventListener('pointerdown', () => {
@@ -64,86 +60,6 @@ const init = () => {
 
   document.querySelector('#restart-button')?.addEventListener('click', (event) => {
     handleClickRestartButton(event)
-  })
-}
-
-const setLight = () => {
-  const ambientLight = new THREE.AmbientLight(0xFFFFFF)
-  scene.add(ambientLight)
-
-  const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 1);
-  scene.add(directionalLight);
-
-  const hemisphereLight = new THREE.HemisphereLight(0x888888, 0x0000FF, 1.0)
-  scene.add(hemisphereLight)
-}
-
-const setSky = () => {
-  const sky = new Sky();
-  sky.scale.setScalar(450000);
-  scene.add(sky);
-
-  const sun = new THREE.Vector3()
-
-  const uniforms = sky.material.uniforms
-  uniforms.turbidity.value = 10
-  uniforms.rayleigh.value = 3
-  uniforms.mieCoefficient.value = 0.005
-  uniforms.mieDirectionalG.value = 0.7
-  
-  const phi = THREE.MathUtils.degToRad(90 - 2)
-  const theta = THREE.MathUtils.degToRad(180)
-
-  sun.setFromSphericalCoords(1, phi, theta)
-
-  uniforms.sunPosition.value.copy(sun)
-}
-
-const setUsu = () => {
-  const loader = new FBXLoader()
-
-  loader.load('./assets/fbx/usu.fbx', (object) => {
-    object.name = 'usu'
-    object.scale.set(1, 1, 1)
-
-    scene.add(object)
-  })
-}
-
-const setMochi = () => {
-  const loader = new FBXLoader()
-
-  loader.load('./assets/fbx/mochi.fbx', (object) => {
-    object.name = 'mochi'
-    object.scale.set(1, 1, 1)
-    
-    scene.add(object)
-  })
-}
-
-const setKine = () => {
-  const loader = new FBXLoader()
-
-  loader.load('./assets/fbx/kine.fbx', (object) => {
-    object.name = 'kine'
-    object.scale.set(1, 1, 1)
-    object.rotateY(-90)
-    object.position.set(0, 100, 0)
-
-    scene.add(object)
-  })
-}
-
-const setTiger = () => {
-  const loader = new FBXLoader()
-
-  loader.load('./assets/fbx/tiger_run.fbx', (object) => {
-    object.name = 'tiger'
-    object.scale.set(2, 2, 2)
-    object.rotateZ(90)
-    object.position.set(-200, 0, -200)
-
-    scene.add(object)
   })
 }
 
