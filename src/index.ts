@@ -71,8 +71,8 @@ const handlePointerUpTapTarget = () => {
 
 const handleClickStartButton = (event: Event) => {
   event.preventDefault()
-  document.querySelector('#start-view')?.setAttribute('style', 'display: none;')
-  document.querySelector('#tap-target')?.setAttribute('style', 'display: block;')
+  document.querySelector('#start-view')?.classList.remove('--active')
+  document.querySelector('#tap-target')?.classList.add('--active')
 
   start()
 }
@@ -83,8 +83,8 @@ const handleClickRestartButton = (event: Event) => {
   document.querySelector('#count')!.textContent = count.toString()
   document.querySelector('#timer')!.textContent = '10'
 
-  document.querySelector('#end-view')?.setAttribute('style', 'display: none;')
-  document.querySelector('#tap-target')?.setAttribute('style', 'display: block;')
+  document.querySelector('#end-view')?.classList.remove('--active')
+  document.querySelector('#tap-target')?.classList.add('--active')
 
   start()
 }
@@ -103,13 +103,13 @@ const start = () => {
 const end = () => {
   clearInterval(id)
   const text = getResultText(count)
-  document.querySelector('#tap-target')?.setAttribute('style', 'display: none;')
+  document.querySelector('#tap-target')?.classList.remove('--active')
 
   document.querySelector('#result')!.textContent = text
   const url = 'http://mochituki.online'
   const hashtags = '餅つきオンライン'
   document.querySelector('#tweet-button')?.setAttribute('href', `https://twitter.com/intent/tweet?text=${encodeURIComponent(text + ' ' + url)}&hashtags=${encodeURIComponent(hashtags)}`)
-  document.querySelector('#end-view')?.setAttribute('style', 'display: flex;')
+  document.querySelector('#end-view')?.classList.add('--active')
 }
 
 window.addEventListener('load', () => {

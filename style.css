@@ -79,6 +79,22 @@ body {
   font-size: 2rem;
 }
 
+#start-view {
+  display: none;
+}
+
+#start-view.--active {
+  display: flex;
+}
+
+#end-view {
+  display: none;
+}
+
+#end-view.--active {
+  display: flex;
+}
+
 #tap-target {
   cursor: pointer;
   position: absolute;
@@ -86,6 +102,11 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+  display: none;
+}
+
+#tap-target.--active {
+  display: block;
 }
 
 .credit a {

@@ -28,10 +28,10 @@
     <meta content="summary_large_image" name="twitter:card" />
   </head>
   <body>
-    <div id="tap-target" style="display: none"></div>
+    <div id="tap-target"></div>
     <div id="timer">10</div>
     <div id="count">0</div>
-    <div id="start-view" class="scrim">
+    <div id="start-view" class="scrim --active">
       <p class="description">
         連打で<br />餅をつきまくれ!<br /><span class="notice"
           >※ 音が出ます</span
@@ -39,7 +39,7 @@
       </p>
       <button id="start-button" class="button">はじめる</button>
     </div>
-    <div id="end-view" class="scrim" style="display: none">
+    <div id="end-view" class="scrim">
       <p id="result" class="description"></p>
       <button id="restart-button" class="button">もう一回</button>
       <a
