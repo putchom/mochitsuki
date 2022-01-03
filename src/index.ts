@@ -4,28 +4,27 @@ import { getResultText } from './getResultText'
 import { setEnvironments } from './set-environments'
 import { setObjects } from './set-objects'
 
+let scene: Scene,
+    camera: PerspectiveCamera,
+    renderer: WebGLRenderer,
+    soundEffect: HTMLAudioElement
+let count = 0
+
 window.addEventListener('load', () => {
   init()
 })
 
-let scene: Scene, camera: PerspectiveCamera, renderer: WebGLRenderer
-let count = 0
-
-const music = new Audio();
-
-music.preload = 'auto';
-music.src = './assets/sound/hit.mp3';
-music.load();
-
 const init = () => {
-  //シーン、カメラ、レンダラーを生成
+  // シーンを生成
   scene = new THREE.Scene();
 
+  // カメラを生成
   camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 100, 2000000)
   camera.position.set(0, 600, 500)
   camera.lookAt(new THREE.Vector3(0, 0, 0))
   scene.add(camera)
 
+  // レンダラーを生成
   renderer = new THREE.WebGLRenderer({antialias:true})
   renderer.setPixelRatio(window.devicePixelRatio)
   renderer.setSize(window.innerWidth, window.innerHeight)
@@ -33,8 +32,14 @@ const init = () => {
   renderer.toneMapping = THREE.ACESFilmicToneMapping
   renderer.toneMappingExposure = 0.5
 
-  //canvasを作成
+  // Canvasを作成
   document.body.appendChild(renderer.domElement)
+
+  // SEを生成
+  soundEffect = new Audio()
+  soundEffect.preload = 'auto'
+  soundEffect.src = './assets/sound/hit.mp3'
+  soundEffect.load()
 
   //ウィンドウのリサイズに対応
   window.addEventListener('resize', () => {
@@ -72,6 +77,8 @@ const rendering = () => {
 const handlePointerDownTapTarget = () => {
   const kine = scene.getObjectByName('kine')
   kine?.position.set(0, 0, 0)
+  soundEffect.currentTime = 0;
+  soundEffect.play();
 }
 
 const handlePointerUpTapTarget = () => {
@@ -79,8 +86,6 @@ const handlePointerUpTapTarget = () => {
   kine?.position.set(0, 100, 0)
   count++
   document.querySelector('#count')!.textContent = count.toString()
-  music.currentTime = 0;
-  music.play();
 }
 
 const handleClickStartButton = (event: Event) => {
