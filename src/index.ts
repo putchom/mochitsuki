@@ -9,10 +9,7 @@ let scene: Scene,
     renderer: WebGLRenderer,
     soundEffect: HTMLAudioElement
 let count = 0
-
-window.addEventListener('load', () => {
-  init()
-})
+let id: NodeJS.Timer
 
 const init = () => {
   // シーンを生成
@@ -51,22 +48,6 @@ const init = () => {
   setEnvironments(scene)
   setObjects(scene)
   rendering()
-
-  document.querySelector('#tap-target')?.addEventListener('pointerdown', () => {
-    handlePointerDownTapTarget()
-  })
-
-  document.querySelector('#tap-target')?.addEventListener('pointerup', () => {
-    handlePointerUpTapTarget()
-  })
-
-  document.querySelector('#start-button')?.addEventListener('click', (event) => {
-    handleClickStartButton(event)
-  })
-
-  document.querySelector('#restart-button')?.addEventListener('click', (event) => {
-    handleClickRestartButton(event)
-  })
 }
 
 const rendering = () => {
@@ -110,19 +91,43 @@ const handleClickRestartButton = (event: Event) => {
 
 const start = () => {
   let remainingTime = 10
-  const id = setInterval(() => {
+  id = setInterval(() => {
     remainingTime--
     document.querySelector('#timer')!.textContent = remainingTime.toString()
     if (remainingTime <= 0) {
-      clearInterval(id)
-      const text = getResultText(count)
-      document.querySelector('#tap-target')?.setAttribute('style', 'display: none;')
-
-      document.querySelector('#result')!.textContent = text
-      const url = 'http://mochituki.online'
-      const hashtags = '餅つきオンライン'
-      document.querySelector('#tweet-button')?.setAttribute('href', `https://twitter.com/intent/tweet?text=${encodeURIComponent(text + ' ' + url)}&hashtags=${encodeURIComponent(hashtags)}`)
-      document.querySelector('#end-view')?.setAttribute('style', 'display: flex;')
+      end()
     }
   }, 1000)
 }
+
+const end = () => {
+  clearInterval(id)
+  const text = getResultText(count)
+  document.querySelector('#tap-target')?.setAttribute('style', 'display: none;')
+
+  document.querySelector('#result')!.textContent = text
+  const url = 'http://mochituki.online'
+  const hashtags = '餅つきオンライン'
+  document.querySelector('#tweet-button')?.setAttribute('href', `https://twitter.com/intent/tweet?text=${encodeURIComponent(text + ' ' + url)}&hashtags=${encodeURIComponent(hashtags)}`)
+  document.querySelector('#end-view')?.setAttribute('style', 'display: flex;')
+}
+
+window.addEventListener('load', () => {
+  init()
+})
+
+document.querySelector('#tap-target')?.addEventListener('pointerdown', () => {
+  handlePointerDownTapTarget()
+})
+
+document.querySelector('#tap-target')?.addEventListener('pointerup', () => {
+  handlePointerUpTapTarget()
+})
+
+document.querySelector('#start-button')?.addEventListener('click', (event) => {
+  handleClickStartButton(event)
+})
+
+document.querySelector('#restart-button')?.addEventListener('click', (event) => {
+  handleClickRestartButton(event)
+})
