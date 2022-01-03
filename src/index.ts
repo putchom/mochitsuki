@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { PerspectiveCamera, Scene, WebGLRenderer } from 'three'
+import { getResultText } from './getResultText'
 import { setEnvironments } from './set-environments'
 import { setObjects } from './set-objects'
 
@@ -109,7 +110,7 @@ const start = () => {
     document.querySelector('#timer')!.textContent = remainingTime.toString()
     if (remainingTime <= 0) {
       clearInterval(id)
-      const text = getText(count)
+      const text = getResultText(count)
       document.querySelector('#tap-target')?.setAttribute('style', 'display: none;')
 
       document.querySelector('#result')!.textContent = text
@@ -119,34 +120,4 @@ const start = () => {
       document.querySelector('#end-view')?.setAttribute('style', 'display: flex;')
     }
   }, 1000)
-}
-
-const getText = (count: number) => {
-  let text = `餅を${count}回つきました`
-
-  if (count < 10) {
-    text = `餅を${count}回つきました。あなたは餅の雑魚です。`
-  } else if (count < 20) {
-    text = `餅を${count}回つきました。あなたは餅の素人です。`
-  } else if (count < 30) {
-    text = `餅を${count}回つきました。あなたは餅の一般人です。`
-  } else if (count < 40) {
-    text = `餅を${count}回つきました。あなたは餅の旦那です。`
-  } else if (count < 50) {
-    text = `餅を${count}回つきました。あなたは餅の達人です。`
-  } else if (count < 60) {
-    text = `餅を${count}回つきました。あなたは餅の大王です。`
-  } else if (count < 70) {
-    text = `餅を${count}回つきました。あなたは餅の魔神です。`
-  } else if (count < 80) {
-    text = `餅を${count}回つきました。あなたは餅の廃人です。`
-  } else if (count < 90) {
-    text = `餅を${count}回つきました。あなたは餅の狂人です。`
-  } else if (count < 100) {
-    text = `餅を${count}回つきました。あなたは餅の神です。`
-  } else {
-    text = `餅を${count}回つきました。あなたは餅の帝王です。`
-  }
-
-  return text
 }
