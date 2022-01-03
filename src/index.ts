@@ -102,7 +102,7 @@ const setSky = () => {
 const setUsu = () => {
   const loader = new FBXLoader()
 
-  loader.load('usu.fbx', (object) => {
+  loader.load('./assets/fbx/usu.fbx', (object) => {
     object.name = 'usu'
     object.scale.set(1, 1, 1)
 
@@ -113,7 +113,7 @@ const setUsu = () => {
 const setMochi = () => {
   const loader = new FBXLoader()
 
-  loader.load('mochi.fbx', (object) => {
+  loader.load('./assets/fbx/mochi.fbx', (object) => {
     object.name = 'mochi'
     object.scale.set(1, 1, 1)
     
@@ -124,7 +124,7 @@ const setMochi = () => {
 const setKine = () => {
   const loader = new FBXLoader()
 
-  loader.load('kine.fbx', (object) => {
+  loader.load('./assets/fbx/kine.fbx', (object) => {
     object.name = 'kine'
     object.scale.set(1, 1, 1)
     object.rotateY(-90)
@@ -137,7 +137,7 @@ const setKine = () => {
 const setTiger = () => {
   const loader = new FBXLoader()
 
-  loader.load('tiger_run.fbx', (object) => {
+  loader.load('./assets/fbx/tiger_run.fbx', (object) => {
     object.name = 'tiger'
     object.scale.set(2, 2, 2)
     object.rotateZ(90)
