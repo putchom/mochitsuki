@@ -38,7 +38,7 @@ const init = () => {
   soundEffect.src = './assets/sound/hit.mp3'
   soundEffect.load()
 
-  //ウィンドウのリサイズに対応
+  // ウィンドウのリサイズに対応
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight
     camera.updateProjectionMatrix()
@@ -56,41 +56,58 @@ const rendering = () => {
 }
 
 const handlePointerDownTapTarget = () => {
+  // 杵の位置をもとに戻す
   const kine = scene.getObjectByName('kine')
   kine?.position.set(0, 0, 0)
+
+  // 打撃音を鳴らす
   soundEffect.currentTime = 0;
   soundEffect.play();
 }
 
 const handlePointerUpTapTarget = () => {
+  // 杵を下げる
   const kine = scene.getObjectByName('kine')
   kine?.position.set(0, 100, 0)
+
+  // カウントアップしてビューに反映
   count++
   document.querySelector('#count')!.textContent = count.toString()
 }
 
 const handleClickStartButton = (event: Event) => {
   event.preventDefault()
+
+  // スタート画面を非表示にしてタップターゲットを表示
   document.querySelector('#start-view')?.classList.remove('--active')
   document.querySelector('#tap-target')?.classList.add('--active')
 
+  // スタートを実行
   start()
 }
 
 const handleClickRestartButton = (event: Event) => {
   event.preventDefault()
+
+  // カウントを0にしてビューに反映
   count = 0
   document.querySelector('#count')!.textContent = count.toString()
+
+  // 時間の表示をリセット
   document.querySelector('#timer')!.textContent = '10'
 
-  document.querySelector('#end-view')?.classList.remove('--active')
+  // 結果画面を非表示にしてタップターゲットを表示
+  document.querySelector('#result-view')?.classList.remove('--active')
   document.querySelector('#tap-target')?.classList.add('--active')
 
+  // スタートを実行
   start()
 }
 
 const start = () => {
+  // 10秒間タイマーを更新したあとendを実行
   let remainingTime = 10
+
   id = setInterval(() => {
     remainingTime--
     document.querySelector('#timer')!.textContent = remainingTime.toString()
@@ -101,15 +118,25 @@ const start = () => {
 }
 
 const end = () => {
+  // タイマーをリセット
   clearInterval(id)
-  const text = getResultText(count)
+
+  // タップターゲットを非表示にする
   document.querySelector('#tap-target')?.classList.remove('--active')
 
+  // 結果のテキストを取得
+  const text = getResultText(count)
+
+  // 結果画面に結果のテキストを挿入する
   document.querySelector('#result')!.textContent = text
+
+  // ツイートボタンに結果のテキストを挿入する
   const url = 'http://mochituki.online'
   const hashtags = '餅つきオンライン'
   document.querySelector('#tweet-button')?.setAttribute('href', `https://twitter.com/intent/tweet?text=${encodeURIComponent(text + ' ' + url)}&hashtags=${encodeURIComponent(hashtags)}`)
-  document.querySelector('#end-view')?.classList.add('--active')
+
+  // 結果画面を表示する
+  document.querySelector('#result-view')?.classList.add('--active')
 }
 
 window.addEventListener('load', () => {

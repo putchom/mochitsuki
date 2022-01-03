@@ -87,11 +87,11 @@ body {
   display: flex;
 }
 
-#end-view {
+#result-view {
   display: none;
 }
 
-#end-view.--active {
+#result-view.--active {
   display: flex;
 }
 
