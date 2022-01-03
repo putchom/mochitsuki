@@ -161,7 +161,7 @@ const handlePointerUpTapTarget = () => {
   const kine = scene.getObjectByName('kine')
   kine?.position.set(0, 100, 0)
   count++
-  document.querySelector('#count')?.textContent = count.toString()
+  document.querySelector('#count')!.textContent = count.toString()
   music.currentTime = 0;
   music.play();
 }
@@ -177,8 +177,8 @@ const handleClickStartButton = (event: Event) => {
 const handleClickRestartButton = (event: Event) => {
   event.preventDefault()
   count = 0
-  document.querySelector('#count')?.textContent = count.toString()
-  document.querySelector('#timer')?.textContent = 10
+  document.querySelector('#count')!.textContent = count.toString()
+  document.querySelector('#timer')!.textContent = '10'
 
   document.querySelector('#end-view')?.setAttribute('style', 'display: none;')
   document.querySelector('#tap-target')?.setAttribute('style', 'display: block;')
@@ -190,13 +190,13 @@ const start = () => {
   let remainingTime = 10
   const id = setInterval(() => {
     remainingTime--
-    document.querySelector('#timer')?.textContent = remainingTime
+    document.querySelector('#timer')!.textContent = remainingTime.toString()
     if (remainingTime <= 0) {
       clearInterval(id)
       const text = getText(count)
       document.querySelector('#tap-target')?.setAttribute('style', 'display: none;')
 
-      document.querySelector('#result')?.textContent = text
+      document.querySelector('#result')!.textContent = text
       const url = 'http://mochituki.online'
       const hashtags = '餅つきオンライン'
       document.querySelector('#tweet-button')?.setAttribute('href', `https://twitter.com/intent/tweet?text=${encodeURIComponent(text + ' ' + url)}&hashtags=${encodeURIComponent(hashtags)}`)
