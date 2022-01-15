@@ -176,3 +176,11 @@ document
   ?.addEventListener('click', (event) => {
     handleClickRestartButton(event)
   })
+
+document.addEventListener(
+  'dblclick',
+  (event) => {
+    event.preventDefault()
+  },
+  { passive: false }
+)
