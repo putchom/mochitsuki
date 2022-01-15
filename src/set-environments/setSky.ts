@@ -1,11 +1,11 @@
 import { MathUtils, Vector3 } from 'three'
-import { Scene } from 'three';
+import { Scene } from 'three'
 import { Sky } from 'three/examples/jsm/objects/Sky'
 
 export const setSky = (scene: Scene) => {
-  const sky = new Sky();
-  sky.scale.setScalar(450000);
-  scene.add(sky);
+  const sky = new Sky()
+  sky.scale.setScalar(450000)
+  scene.add(sky)
 
   const sun = new Vector3()
 
@@ -14,7 +14,7 @@ export const setSky = (scene: Scene) => {
   uniforms.rayleigh.value = 3
   uniforms.mieCoefficient.value = 0.005
   uniforms.mieDirectionalG.value = 0.7
-  
+
   const phi = MathUtils.degToRad(90 - 2)
   const theta = MathUtils.degToRad(180)
 

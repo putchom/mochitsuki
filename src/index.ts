@@ -5,24 +5,29 @@ import { setEnvironments } from './set-environments'
 import { setObjects } from './set-objects'
 
 let scene: Scene,
-    camera: PerspectiveCamera,
-    renderer: WebGLRenderer,
-    soundEffect: HTMLAudioElement
+  camera: PerspectiveCamera,
+  renderer: WebGLRenderer,
+  soundEffect: HTMLAudioElement
 let count = 0
 let id: NodeJS.Timer
 
 const init = () => {
   // シーンを生成
-  scene = new THREE.Scene();
+  scene = new THREE.Scene()
 
   // カメラを生成
-  camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 100, 2000000)
+  camera = new THREE.PerspectiveCamera(
+    60,
+    window.innerWidth / window.innerHeight,
+    100,
+    2000000
+  )
   camera.position.set(0, 600, 500)
   camera.lookAt(new THREE.Vector3(0, 0, 0))
   scene.add(camera)
 
   // レンダラーを生成
-  renderer = new THREE.WebGLRenderer({antialias:true})
+  renderer = new THREE.WebGLRenderer({ antialias: true })
   renderer.setPixelRatio(window.devicePixelRatio)
   renderer.setSize(window.innerWidth, window.innerHeight)
   renderer.outputEncoding = THREE.sRGBEncoding
@@ -39,11 +44,15 @@ const init = () => {
   soundEffect.load()
 
   // ウィンドウのリサイズに対応
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight
-    camera.updateProjectionMatrix()
-    renderer.setSize(window.innerWidth, window.innerHeight)
-  }, false)
+  window.addEventListener(
+    'resize',
+    () => {
+      camera.aspect = window.innerWidth / window.innerHeight
+      camera.updateProjectionMatrix()
+      renderer.setSize(window.innerWidth, window.innerHeight)
+    },
+    false
+  )
 
   setEnvironments(scene)
   setObjects(scene)
@@ -61,8 +70,8 @@ const handlePointerDownTapTarget = () => {
   kine?.position.set(0, 0, 0)
 
   // 打撃音を鳴らす
-  soundEffect.currentTime = 0;
-  soundEffect.play();
+  soundEffect.currentTime = 0
+  soundEffect.play()
 }
 
 const handlePointerUpTapTarget = () => {
@@ -133,7 +142,14 @@ const end = () => {
   // ツイートボタンに結果のテキストを挿入する
   const url = 'http://mochituki.online'
   const hashtags = '餅つきオンライン'
-  document.querySelector('#tweet-button')?.setAttribute('href', `https://twitter.com/intent/tweet?text=${encodeURIComponent(text + ' ' + url)}&hashtags=${encodeURIComponent(hashtags)}`)
+  document
+    .querySelector('#tweet-button')
+    ?.setAttribute(
+      'href',
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        text + ' ' + url
+      )}&hashtags=${encodeURIComponent(hashtags)}`
+    )
 
   // 結果画面を表示する
   document.querySelector('#result-view')?.classList.add('--active')
@@ -155,6 +171,8 @@ document.querySelector('#start-button')?.addEventListener('click', (event) => {
   handleClickStartButton(event)
 })
 
-document.querySelector('#restart-button')?.addEventListener('click', (event) => {
-  handleClickRestartButton(event)
-})
+document
+  .querySelector('#restart-button')
+  ?.addEventListener('click', (event) => {
+    handleClickRestartButton(event)
+  })

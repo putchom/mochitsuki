@@ -7,7 +7,7 @@ export const setMochi = (scene: Scene) => {
   loader.load('./assets/fbx/mochi.fbx', (object) => {
     object.name = 'mochi'
     object.scale.set(1, 1, 1)
-    
+
     scene.add(object)
   })
 }
