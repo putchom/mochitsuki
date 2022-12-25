@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/putchom/mochitsuki#readme",
   "dependencies": {
-    "@types/three": "0.135.0",
+    "@types/three": "0.146.0",
     "three": "0.148.0"
   },
   "devDependencies": {
