@@ -66,7 +66,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"setObjects\": () => (/* binding */ setObjects)\n/* harmony export */ });\n/* harmony import */ var _setKine__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setKine */ \"./src/set-objects/setKine.ts\");\n/* harmony import */ var _setMochi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./setMochi */ \"./src/set-objects/setMochi.ts\");\n/* harmony import */ var _setTiger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./setTiger */ \"./src/set-objects/setTiger.ts\");\n/* harmony import */ var _setUsu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./setUsu */ \"./src/set-objects/setUsu.ts\");\n\n\n\n\nconst setObjects = (scene) => {\n    (0,_setUsu__WEBPACK_IMPORTED_MODULE_3__.setUsu)(scene);\n    (0,_setMochi__WEBPACK_IMPORTED_MODULE_1__.setMochi)(scene);\n    (0,_setKine__WEBPACK_IMPORTED_MODULE_0__.setKine)(scene);\n    (0,_setTiger__WEBPACK_IMPORTED_MODULE_2__.setTiger)(scene);\n};\n\n\n//# sourceURL=webpack://mochitsuki/./src/set-objects/index.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"setObjects\": () => (/* binding */ setObjects)\n/* harmony export */ });\n/* harmony import */ var _setKine__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setKine */ \"./src/set-objects/setKine.ts\");\n/* harmony import */ var _setMochi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./setMochi */ \"./src/set-objects/setMochi.ts\");\n/* harmony import */ var _setRabbit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./setRabbit */ \"./src/set-objects/setRabbit.ts\");\n/* harmony import */ var _setTiger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./setTiger */ \"./src/set-objects/setTiger.ts\");\n/* harmony import */ var _setUsu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./setUsu */ \"./src/set-objects/setUsu.ts\");\n\n\n\n\n\nconst setObjects = (scene) => {\n    (0,_setUsu__WEBPACK_IMPORTED_MODULE_4__.setUsu)(scene);\n    (0,_setMochi__WEBPACK_IMPORTED_MODULE_1__.setMochi)(scene);\n    (0,_setKine__WEBPACK_IMPORTED_MODULE_0__.setKine)(scene);\n    (0,_setTiger__WEBPACK_IMPORTED_MODULE_3__.setTiger)(scene);\n    (0,_setRabbit__WEBPACK_IMPORTED_MODULE_2__.setRabbit)(scene);\n};\n\n\n//# sourceURL=webpack://mochitsuki/./src/set-objects/index.ts?");
 
 /***/ }),
 
@@ -90,13 +90,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/set-objects/setRabbit.ts":
+/*!**************************************!*\
+  !*** ./src/set-objects/setRabbit.ts ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"setRabbit\": () => (/* binding */ setRabbit)\n/* harmony export */ });\n/* harmony import */ var three_examples_jsm_loaders_FBXLoader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three/examples/jsm/loaders/FBXLoader */ \"./node_modules/three/examples/jsm/loaders/FBXLoader.js\");\n\nconst setRabbit = (scene) => {\n    const loader = new three_examples_jsm_loaders_FBXLoader__WEBPACK_IMPORTED_MODULE_0__.FBXLoader();\n    loader.load('./assets/fbx/rabbit.fbx', (object) => {\n        object.name = 'rabbit';\n        object.scale.set(60, 60, 60);\n        object.rotateX(0);\n        object.position.set(-160, 0, -200);\n        scene.add(object);\n    });\n};\n\n\n//# sourceURL=webpack://mochitsuki/./src/set-objects/setRabbit.ts?");
+
+/***/ }),
+
 /***/ "./src/set-objects/setTiger.ts":
 /*!*************************************!*\
   !*** ./src/set-objects/setTiger.ts ***!
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"setTiger\": () => (/* binding */ setTiger)\n/* harmony export */ });\n/* harmony import */ var three_examples_jsm_loaders_FBXLoader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three/examples/jsm/loaders/FBXLoader */ \"./node_modules/three/examples/jsm/loaders/FBXLoader.js\");\n\nconst setTiger = (scene) => {\n    const loader = new three_examples_jsm_loaders_FBXLoader__WEBPACK_IMPORTED_MODULE_0__.FBXLoader();\n    loader.load('./assets/fbx/tiger_run.fbx', (object) => {\n        object.name = 'tiger';\n        object.scale.set(2, 2, 2);\n        object.rotateZ(90);\n        object.position.set(-200, 0, -200);\n        scene.add(object);\n    });\n};\n\n\n//# sourceURL=webpack://mochitsuki/./src/set-objects/setTiger.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"setTiger\": () => (/* binding */ setTiger)\n/* harmony export */ });\n/* harmony import */ var three_examples_jsm_loaders_FBXLoader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three/examples/jsm/loaders/FBXLoader */ \"./node_modules/three/examples/jsm/loaders/FBXLoader.js\");\n\nconst setTiger = (scene) => {\n    const loader = new three_examples_jsm_loaders_FBXLoader__WEBPACK_IMPORTED_MODULE_0__.FBXLoader();\n    loader.load('./assets/fbx/tiger_run.fbx', (object) => {\n        object.name = 'tiger';\n        object.scale.set(2, 2, 2);\n        object.rotateZ(90);\n        object.position.set(-200, 0, -800);\n        scene.add(object);\n    });\n};\n\n\n//# sourceURL=webpack://mochitsuki/./src/set-objects/setTiger.ts?");
 
 /***/ }),
 

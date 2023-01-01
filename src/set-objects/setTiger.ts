@@ -8,7 +8,7 @@ export const setTiger = (scene: Scene) => {
     object.name = 'tiger'
     object.scale.set(2, 2, 2)
     object.rotateZ(90)
-    object.position.set(-200, 0, -200)
+    object.position.set(-200, 0, -800)
 
     scene.add(object)
   })
