@@ -7,8 +7,8 @@ export const setRabbit = (scene: Scene) => {
   loader.load('./assets/fbx/rabbit.fbx', (object) => {
     object.name = 'rabbit'
     object.scale.set(60, 60, 60)
-    object.rotateX(0)
-    object.position.set(-160, 0, -200)
+    object.rotateY(-90)
+    object.position.set(200, 0, -600)
 
     scene.add(object)
   })
